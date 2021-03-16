@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { ErrorResponse, DAppClient, NetworkType } from "@airgap/beacon-sdk";
 
 function App() {
+  const client = new DAppClient({ name: "Test Request" });
+
+  const login = async () => {
+    await client
+      .requestPermissions({
+        network: {
+          type: NetworkType.EDONET,
+          rpcUrl: "https://testnet-tezos.giganode.io/",
+        },
+      })
+      .then((response) => console.log(response));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={login}>"Test"</button>
     </div>
   );
 }
