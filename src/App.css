@@ -1,0 +1,295 @@
+* {
+  font-family: "Carme", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #15202b;
+  /* color: white; */
+}
+
+.container {
+  padding: 0 120px;
+  margin: 0 auto;
+}
+
+.title {
+  color: white;
+  font-size: 1.5em;
+}
+
+.nav {
+  background-color: #22303c;
+  width: 100%;
+}
+
+.nav_container {
+  padding: 0 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav_right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.nav_right > * {
+  margin-left: 2em;
+}
+
+.loginButton,
+.logoutButton {
+  color: #0091ff;
+  font-weight: bold;
+  background-color: #22303c;
+  padding: 0.5em 2em;
+  border-color: #0091ff;
+  outline: none;
+  border-radius: 50px;
+  transition: 0.2s ease-in;
+}
+
+.loginButton:hover {
+  background-color: #0091ff;
+  color: white;
+}
+
+.logoutButton:hover {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+
+.header {
+  padding: 2em 0;
+  font-size: 2em;
+  background-color: #15202b;
+  text-align: right;
+}
+
+.header_font {
+  font-size: 1.5em;
+  margin: 0;
+  color: white;
+}
+
+.waveEmoji {
+  cursor: pointer;
+}
+
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s; /* Change to speed up or slow down */
+  animation-iteration-count: 1; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.card_wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 32px;
+  grid-row-gap: 32px;
+  color: white;
+}
+
+.card {
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid #485057;
+}
+
+.card > h3 {
+  margin: 24px;
+  font-size: 3em;
+}
+
+.card_picture {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 30px;
+  transition: 0.2s ease-in;
+}
+
+.donate_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.donate {
+  color: #0091ff;
+  font-weight: bold;
+  background-color: #22303c;
+  padding: 0.5em 2em;
+  border-color: #0091ff;
+  outline: none;
+  border-radius: 50px;
+  transition: 0.2s ease-in;
+}
+
+.donate:hover {
+  background-color: #0091ff;
+  color: white;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal_content {
+  text-align: center;
+  position: absolute;
+  width: 25%;
+  height: 30%;
+  left: 37%;
+  margin: 0;
+  border: 1px solid #485057;
+  background-color: #22303c;
+  border-radius: 30px;
+  animation: show 0.2s;
+  transform: scale(1);
+}
+
+.modal_description {
+  display: flex;
+  padding: 1em 0;
+  border-bottom: 1px solid #15202b;
+}
+
+.modal_description_icon {
+  margin-left: 1em;
+  flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.modal_description_icon > img {
+  border-radius: 50%;
+  width: 80%;
+}
+
+.modal_description_title {
+  flex-basis: 100%;
+  text-align: left;
+  vertical-align: sub;
+  text-decoration: underline;
+  font-size: 20px;
+  align-self: flex-end;
+}
+
+.modal_donation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5em;
+  margin-bottom: 0em;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+.donation_input {
+  height: 40px;
+  width: 50%;
+  color: white;
+  outline: none;
+  background-color: #393e3f;
+  border-style: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  padding-left: 2em;
+  text-align: left;
+  margin: 0;
+}
+
+.donate_submit {
+  width: 20%;
+  height: 40px;
+  color: #0091ff;
+  background-color: #22303c;
+  outline: none;
+  border-color: #0091ff;
+  color: white;
+  border-radius: 3px;
+  transition: 0.2s ease;
+}
+
+.donate_submit:hover {
+  background-color: #0091ff;
+}
+
+.success {
+  color: green;
+}
+
+.failure {
+  color: red;
+}
+
+@keyframes show {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  .card_wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .card_wrapper {
+    grid-template-columns: 1fr;
+  }
+}
