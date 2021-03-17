@@ -2,7 +2,12 @@ import React from "react";
 import Card from "./Card";
 import Modal from "./Modal";
 
-export default function CardContainer({ projects, setActive, user }) {
+export default function CardContainer({
+  projects,
+  setActive,
+  user,
+  updateProjects,
+}) {
   return (
     <>
       <div className="container">
@@ -11,8 +16,9 @@ export default function CardContainer({ projects, setActive, user }) {
             <Card
               key={project.id}
               data={project}
-              setProject={setActive}
+              setActive={setActive}
               user={user}
+              updateProjects={updateProjects}
             ></Card>
           ))}
         </div>

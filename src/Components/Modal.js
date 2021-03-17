@@ -18,6 +18,7 @@ export default function Modal({ project, donate, setActiveProject }) {
             <h2>{project.projectName}</h2>
           </div>
         </div>
+        <p>The minimum amount of Tezos required to donate is at least 1.</p>
         <div className="modal_donation">
           <input
             className="donation_input"

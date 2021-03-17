@@ -18,6 +18,7 @@ const client = new DAppClient({
 });
 
 function App() {
+  // tz2T6p4kWGHipyZM5sgestddcruRJs17in1F
   //tz2JxQqaMMZRGarvE8nBKrvnZFtGUZP6BurD arranaaa wallet
 
   const [user, setUser] = useState({});
@@ -25,14 +26,23 @@ function App() {
   const [activeProject, setActiveProject] = useState({});
 
   useEffect(() => {
-    let retrievedUserInfo = JSON.parse(
-      localStorage.getItem("beacon:user-json")
-    );
+    const checkUserStorage = () => {
+      let retrievedUserInfo = localStorage.getItem("beacon:user-json");
 
-    if (Object.keys(retrievedUserInfo).length > 0) {
-      setUser(retrievedUserInfo);
-    }
+      if (localStorage.getItem("beacon:active-account") === "undefined") {
+        localStorage.setItem("beacon:user-json", undefined);
+        setUser({});
+      } else {
+        setUser(JSON.parse(retrievedUserInfo));
+      }
+    };
+
+    window.addEventListener("storage", checkUserStorage);
+
+    checkUserStorage();
   }, []);
+
+  useEffect(() => {});
 
   const login = async () => {
     await client
@@ -43,7 +53,6 @@ function App() {
         },
       })
       .then((response) => {
-        console.log(response);
         setUser(response.accountInfo);
         localStorage.setItem(
           "beacon:user-json",
@@ -68,10 +77,24 @@ function App() {
       .requestOperation({
         operationDetails: [obj],
       })
-      .then((response) => console.log(response));
+      .then((response) => {
+        updateProjects(project, "pending", response.transactionHash);
+        setActiveProject({});
+      })
+      .catch((err) => console.log(err));
   };
 
-  console.log(projects);
+  const updateProjects = (data, state, hash = null) => {
+    const index = [...projects].findIndex((project) => project.id === data.id);
+
+    const projectsCopy = [...projects];
+
+    projectsCopy[index].status = state;
+    if (hash) {
+      projectsCopy[index].recentHash = hash;
+    }
+    setProjects(projectsCopy);
+  };
 
   return (
     <div className="app">
@@ -88,6 +111,7 @@ function App() {
         user={user}
         projects={projects}
         setActive={setActiveProject}
+        updateProjects={updateProjects}
       ></CardContainer>
     </div>
   );

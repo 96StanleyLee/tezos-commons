@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Status from "./Status";
 
-export default function Card({ data, setProject, user }) {
+export default function Card({ data, setActive, user, updateProjects }) {
   const [pictureType, setpictureType] = useState("static");
 
   const style = {
@@ -20,7 +21,11 @@ export default function Card({ data, setProject, user }) {
         ></div>
         <div className="donate_button">
           {Object.keys(user).length > 0 ? (
-            <button className="donate" onClick={() => setProject(data)}>
+            <button
+              disabled={data.status === "pending"}
+              className="donate"
+              onClick={() => setActive(data)}
+            >
               Donate
             </button>
           ) : (
@@ -29,7 +34,11 @@ export default function Card({ data, setProject, user }) {
         </div>
 
         {data.status !== "none" && data.status !== "pending" && (
-          <p>Your donation has {data.status}</p>
+          <div className={data.status}>Your donation has</div>
+        )}
+
+        {data.status === "pending" && (
+          <Status updateProjects={updateProjects} data={data} />
         )}
 
         <p>{data.description}</p>

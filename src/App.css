@@ -169,6 +169,11 @@ body {
   color: white;
 }
 
+.donate:disabled {
+  opacity: 0.3;
+  background-color: #0091ff;
+}
+
 .modal {
   position: fixed;
   z-index: 1;
@@ -227,13 +232,17 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 5em;
+  margin-top: 2em;
   margin-bottom: 0em;
   border-radius: 3px;
   justify-content: center;
 }
 
 .donation_input {
+  background: url("https://s2.coinmarketcap.com/static/img/coins/200x200/2011.png")
+    no-repeat;
+  background-position: 8px 10px;
+  background-size: 20px;
   height: 40px;
   width: 50%;
   color: white;
@@ -263,14 +272,43 @@ body {
   background-color: #0091ff;
 }
 
-.success {
+.pending {
+  color: black;
+  width: 100%;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  background-color: grey;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.applied {
   color: green;
+  width: 100%;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  background-color: lightgreen;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.applied:after {
+  content: " been applied";
 }
 
 .failure {
   color: red;
+  width: 100%;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  background-color: pink;
+  border-radius: 5px;
+  text-align: center;
 }
 
+.failure:after {
+  content: " failed";
+}
 @keyframes show {
   from {
     transform: scale(0);
