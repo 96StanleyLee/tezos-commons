@@ -35,7 +35,7 @@ function App() {
         setCompletedDonations(JSON.parse(retrievedDonations));
       }
 
-      if (retrievedUserInfo !== "undefined") {
+      if (retrievedUserInfo !== "undefined" && retrievedUserInfo !== null) {
         retrievedUserInfo = JSON.parse(retrievedUserInfo);
         setUser(retrievedUserInfo[0]);
       }

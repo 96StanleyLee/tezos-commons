@@ -242,6 +242,10 @@ body {
   justify-content: center;
 }
 
+.modal_donation > * {
+  margin-left: 1em;
+}
+
 .donation_input {
   background: url("https://s2.coinmarketcap.com/static/img/coins/200x200/2011.png")
     no-repeat;
@@ -397,6 +401,23 @@ body {
   }
 }
 
+@media (max-height: 900px) {
+  .modal_content {
+    height: 40%;
+  }
+}
+
+@media (max-height: 700px) {
+  .modal_content {
+    height: 50%;
+  }
+}
+
+@media (max-height: 500px) {
+  .modal_content {
+    height: 70%;
+  }
+}
 @media (max-width: 1400px) {
   .modal_description_icon {
     flex-basis: 70%;
@@ -447,6 +468,10 @@ body {
 
   .modal_donation {
     flex-direction: column;
+  }
+
+  .modal_donation > * {
+    margin-bottom: 1em;
   }
 
   .modal_content {
