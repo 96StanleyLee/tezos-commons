@@ -4,7 +4,7 @@ function Status({ data, updateProjects }) {
   useEffect(() => {
     const interval = setInterval(() => {
       statusCheck();
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -16,12 +16,8 @@ function Status({ data, updateProjects }) {
 
     const jsonData = await fetchData.json();
 
-    console.log(jsonData);
-
     if (jsonData.length > 0) {
-      console.log("do I really belong here?");
-
-      updateProjects(data, jsonData[0].status);
+      updateProjects(data, jsonData[0].status, null, jsonData);
     }
   };
 

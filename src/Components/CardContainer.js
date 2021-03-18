@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "./Card";
-import Modal from "./Modal";
 
 export default function CardContainer({
   projects,
@@ -10,7 +9,7 @@ export default function CardContainer({
 }) {
   return (
     <>
-      <div className="container">
+      <div className="card_container container">
         <div className="card_wrapper">
           {projects.map((project) => (
             <Card

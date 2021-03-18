@@ -1,6 +1,6 @@
 import React from "react";
 
-function Navbar({ login, logout, user }) {
+function Navbar({ login, logout, user, sideBar, setSidebar }) {
   return (
     <div className="nav">
       <div className="nav_container">
@@ -18,6 +18,12 @@ function Navbar({ login, logout, user }) {
                 {user.address.substring(0, user.address.length - 30) +
                   "*".repeat(5)}
               </div>
+              <button
+                onClick={() => setSidebar(!sideBar)}
+                className="historyButton"
+              >
+                History
+              </button>
               <button className="logoutButton" onClick={logout}>
                 Logout
               </button>

@@ -2,13 +2,10 @@ import React, { useState } from "react";
 
 export default function Modal({ project, donate, setActiveProject }) {
   const [defaultDonation, setdefaultDonation] = useState(1);
-  const modalRemoveClick = (e) => {
-    e.stopPropagation();
-    setActiveProject({});
-  };
+  const [disabled, setDisabled] = useState(false);
 
   return (
-    <div className="modal" onClick={(e) => modalRemoveClick(e)}>
+    <div className="modal" onClick={() => setActiveProject({})}>
       <div className="modal_content" onClick={(e) => e.stopPropagation()}>
         <div className="modal_description">
           <div className="modal_description_icon">
@@ -30,7 +27,11 @@ export default function Modal({ project, donate, setActiveProject }) {
           />
           <button
             className="donate_submit"
-            onClick={() => donate(defaultDonation, project)}
+            disabled={disabled}
+            onClick={() => {
+              donate(defaultDonation, project);
+              setDisabled(true);
+            }}
           >
             Donate
           </button>

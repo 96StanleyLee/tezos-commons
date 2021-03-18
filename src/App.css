@@ -43,7 +43,8 @@ body {
 }
 
 .loginButton,
-.logoutButton {
+.logoutButton,
+.historyButton {
   color: #0091ff;
   font-weight: bold;
   background-color: #22303c;
@@ -54,7 +55,8 @@ body {
   transition: 0.2s ease-in;
 }
 
-.loginButton:hover {
+.loginButton:hover,
+.historyButton:hover {
   background-color: #0091ff;
   color: white;
 }
@@ -126,6 +128,10 @@ body {
   color: white;
 }
 
+.card_container {
+  padding-bottom: 2em;
+}
+
 .card {
   padding: 1em;
   border-radius: 10px;
@@ -170,8 +176,7 @@ body {
 }
 
 .donate:disabled {
-  opacity: 0.3;
-  background-color: #0091ff;
+  display: none;
 }
 
 .modal {
@@ -194,7 +199,6 @@ body {
   height: 30%;
   left: 37%;
   margin: 0;
-  border: 1px solid #485057;
   background-color: #22303c;
   border-radius: 30px;
   animation: show 0.2s;
@@ -221,7 +225,7 @@ body {
 
 .modal_description_title {
   flex-basis: 100%;
-  text-align: left;
+  text-align: center;
   vertical-align: sub;
   text-decoration: underline;
   font-size: 20px;
@@ -272,6 +276,10 @@ body {
   background-color: #0091ff;
 }
 
+.donate_submit:disabled {
+  opacity: 0.1;
+}
+
 .pending {
   color: black;
   width: 100%;
@@ -296,7 +304,7 @@ body {
   content: " been applied";
 }
 
-.failure {
+.failed {
   color: red;
   width: 100%;
   padding: 0.5em 0;
@@ -306,9 +314,78 @@ body {
   text-align: center;
 }
 
-.failure:after {
+.failed:after {
   content: " failed";
 }
+
+.sidebar {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 1s ease;
+}
+
+.donation_sidebar {
+  background-color: #22303c;
+  height: 100%;
+  width: 20%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  transition: 1s;
+  animation: slide-in 0.5s;
+  padding-top: 60px;
+  border-radius: 10px;
+}
+
+.sidebar_title {
+  text-align: center;
+}
+
+.donation_icon {
+  width: 60%;
+}
+
+.donation_icon_image {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.donation_cards {
+  padding: 0 1em;
+}
+
+.donation_card {
+  padding: 0 1em;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  border: 1px solid #485057;
+  border-radius: 10px;
+}
+
+.donation_details {
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
 @keyframes show {
   from {
     transform: scale(0);
@@ -320,14 +397,84 @@ body {
   }
 }
 
+@media (max-width: 1400px) {
+  .modal_description_icon {
+    flex-basis: 70%;
+  }
+
+  .modal_description_icon > img {
+    width: 95%;
+  }
+}
+
 @media (max-width: 1200px) {
   .card_wrapper {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .modal_description_icon > img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .modal_description_icon {
+    display: none;
+  }
+
+  .modal_content > p {
+    display: none;
+  }
+
+  .donate_submit {
+    width: 30%;
   }
 }
 
 @media (max-width: 800px) {
   .card_wrapper {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .nav_container {
+    flex-direction: column;
+  }
+
+  .donate_submit {
+    width: 40%;
+  }
+
+  .modal_donation {
+    flex-direction: column;
+  }
+
+  .modal_content {
+    width: 35%;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal_content {
+    width: 45%;
+  }
+
+  .container {
+    padding: 0 60px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav_right {
+    flex-direction: column;
+  }
+
+  .nav_right > * {
+    margin-bottom: 1em;
+  }
+
+  .modal_content {
+    width: 60%;
+    left: 25%;
   }
 }
