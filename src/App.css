@@ -413,9 +413,9 @@ body {
   }
 }
 
-@media (max-height: 500px) {
+@media (max-height: 500px) and (max-width: 500px) {
   .modal_content {
-    height: 70%;
+    height: 100%;
   }
 }
 @media (max-width: 1400px) {
